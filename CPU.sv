@@ -17,12 +17,12 @@ module cpu;
     wire alu_src;
     wire reg_write;
 
-    wire [4:0] output_register_bank_multiplexer;
+    wire [4:0] output_register_bank_multiplexor;
 
     wire zero_alu;
 
     wire [3:0] alu_opcode;
-    wire [63:0] output_pc_adder, output_data_memory, output_alu, reg_data_1, reg_data_2, output_alu_multiplexer, input_data_register, output_sign_extend, output_shift_unit, output_shift_unit_adder;
+    wire [63:0] output_pc_adder, output_data_memory, output_alu, reg_data_1, reg_data_2,output_alu_multiplexor, input_data_register, output_sign_extend, output_shift_unit, output_shift_unit_adder;
 
     initial begin
         pc_reset = 1;
@@ -49,7 +49,7 @@ module cpu;
         oldpc, 
         instruction
         );
-    Control_Unit ControlUnit1(
+    ControlUnit ControlUnit1(
         instruction[31:21],
         branch,
         mem_read,
@@ -63,11 +63,11 @@ module cpu;
         instruction[20:16],
         instruction[4:0],
         reg_to_loc,
-        output_register_bank_multiplexer
+        output_register_bank_multiplexor
            );
-    registerBank register_bank(
+    RegisterBank register_bank(
         instruction[9:5], 
-        output_register_bank_multiplexer, 
+        output_register_bank_multiplexor, 
         instruction[4:0], 
         input_data_register, 
         clk, 
@@ -79,11 +79,11 @@ module cpu;
         reg_data_2, 
         output_sign_extend, 
         alu_src, 
-        output_alu_multiplexer
+       output_alu_multiplexor
         );
     Alu alu1(
         reg_data_1, 
-        output_alu_multiplexer, 
+       output_alu_multiplexor, 
         alu_opcode, 
         output_alu, 
         zero_alu
@@ -125,7 +125,7 @@ module cpu;
         );
 
     initial begin
-        $dumpfile("cpu.vcd");
+        $dumpfile("CPU.vcd");
         $dumpvars(0, cpu);
         #200;
         $finish;
