@@ -62,6 +62,7 @@ module Alu_Testbench;
     // Simulación del reloj
     always #((CLOCK_PERIOD/2)) begin
         // Alternar el reloj cada periodo
+         clk = ~clk;
     end
 
 endmodule

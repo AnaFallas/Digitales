@@ -1,9 +1,9 @@
 module InstructionMemory_Testbench;
 
-    // Parámetros de simulación
-    parameter CLOCK_PERIOD = 10; // Periodo de reloj en unidades de tiempo
-    parameter MEM_SIZE = 16; // Tamaño de la memoria de instrucciones
-
+    
+    parameter CLOCK_PERIOD = 10;
+    parameter MEM_SIZE = 16; 
+    
     // Definición de señales
     logic [63:0] adr;
     logic [31:0] Instruction;
