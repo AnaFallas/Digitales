@@ -1,14 +1,18 @@
-`timescale 1ns / 1ns
-
 module Datamemory_tb;
 
-    // Parámetros del módulo
-    reg [63:0] adr, datain;
-    reg w, r, clk;
-    wire [63:0] dataout;
+    // Parámetros
+    parameter CLK_PERIOD = 10; // Periodo de reloj en unidades de tiempo
+
+    // Señales del testbench
+    logic clk = 0;
+    logic [63:0] adr;
+    logic [63:0] datain;
+    logic w;
+    logic r;
+    logic [63:0] dataout;
 
     // Instanciación del módulo bajo prueba
-    Datamemory uut (
+    Datamemory dut (
         .adr(adr),
         .datain(datain),
         .w(w),
@@ -19,31 +23,38 @@ module Datamemory_tb;
 
     // Generación de estímulos
     initial begin
-        $dumpfile("datamemory_tb.vcd");
-        $dumpvars(0, Datamemory_tb);
-
-        // Inicialización de señales
+        // Inicialización de las entradas
         adr = 0;
         datain = 0;
         w = 0;
         r = 0;
-        clk = 0;
 
         // Ciclo de reloj
-        forever #5 clk = ~clk;
+        forever #CLK_PERIOD clk = ~clk;
 
-        // Escritura en memoria (caso 1)
+        // Escritura de datos en la memoria
+        #20;
+        adr = 10;
+        datain = 64'hABCDEFFEDCBA;
         w = 1;
-        adr = 10;
-        datain = 32'h12345678;
         #10;
-
-        // Lectura desde memoria (caso 1)
         w = 0;
-        r = 1;
-        adr = 10;
-        #10;
 
+        // Lectura de datos desde la memoria
+        adr = 10;
+        r = 1;
+        #10;
+        r = 0;
+
+        // Terminar simulación
+        #10;
         $finish;
     end
+
+    // Monitor para visualizar las salidas
+    always @(posedge clk) begin
+        $display("Time = %0t, dataout = %h", $time, dataout);
+    end
+
 endmodule
+

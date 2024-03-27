@@ -1,15 +1,16 @@
-`timescale 1ns / 1ns
-
 module AluControl_tb;
 
-    // Parámetros del módulo
-    reg [1:0] ALUOp_in;
-    reg [31:25] func7;
-    reg [14:12] func3;
-    wire [3:0] AluControl_out;
+    // Parámetros
+    parameter CLK_PERIOD = 10; // Periodo de reloj en unidades de tiempo
+
+    // Señales del testbench
+    logic [1:0] ALUOp_in;
+    logic [31:25] func7;
+    logic [14:12] func3;
+    logic [3:0] AluControl_out;
 
     // Instanciación del módulo bajo prueba
-    AluControl uut (
+    AluControl dut (
         .ALUOp_in(ALUOp_in),
         .func7(func7),
         .func3(func3),
@@ -18,46 +19,47 @@ module AluControl_tb;
 
     // Generación de estímulos
     initial begin
-        $dumpfile("alu_control_tb.vcd");
-        $dumpvars(0, AluControl_tb);
-
-        // Prueba 1: Caso 1 (12'b00_xxxxxxx_xxx)
+        // Inicialización de las entradas
         ALUOp_in = 2'b00;
-        func7 = 8'bxxxxxxxx;
+        func7 = 7'bxxxxxxxx;
         func3 = 3'bxxx;
-        #10;
 
-        // Prueba 2: Caso 2 (12'b01_xxxxxxx_xxx)
-        ALUOp_in = 2'b01;
-        func7 = 8'bxxxxxxxx;
-        func3 = 3'bxxx;
+        // Test case 1
         #10;
-
-        // Prueba 3: Caso 3 (12'b10_0000000_000)
-        ALUOp_in = 2'b10;
-        func7 = 8'b0000000;
+        ALUOp_in = 2'b00;
+        func7 = 7'b0000000;
         func3 = 3'b000;
         #10;
+        $display("Case 1: AluControl_out = %b", AluControl_out);
 
-        // Prueba 4: Caso 4 (12'b10_0100000_000)
-        ALUOp_in = 2'b10;
-        func7 = 8'b0100000;
-        func3 = 3'b000;
+        // Test case 2
         #10;
-
-        // Prueba 5: Caso 5 (12'b10_0000000_111)
         ALUOp_in = 2'b10;
-        func7 = 8'b0000000;
+        func7 = 7'b0000000;
         func3 = 3'b111;
         #10;
+        $display("Case 2: AluControl_out = %b", AluControl_out);
 
-        // Prueba 6: Caso 6 (12'b10_0000000_110)
+        // Test case 3
+        #10;
         ALUOp_in = 2'b10;
-        func7 = 8'b0000000;
+        func7 = 7'b0000000;
         func3 = 3'b110;
         #10;
+        $display("Case 3: AluControl_out = %b", AluControl_out);
 
-        
+        // Test case 4 (default)
+        #10;
+        ALUOp_in = 2'b11;
+        func7 = 7'b0000000;
+        func3 = 3'b000;
+        #10;
+        $display("Case 4 (default): AluControl_out = %b", AluControl_out);
+
+        // Terminar simulación
+        #10;
         $finish;
     end
+
 endmodule
+
