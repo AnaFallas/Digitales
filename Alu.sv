@@ -1,23 +1,23 @@
 module Alu(
-    input logic [63:0] A, B,
+    input logic [31:0] A, B,
     input logic [3:0] ALU_Sel,
-    output logic [63:0] ALU_Out,
+    output logic [31:0] ALU_Out,
     output logic coutfin, // Carry-out de la suma
     output logic z // Salida de cero
 );
 
-    logic [63:0] ALU_Result;
-    logic [63:0] Suma_Result; // Resultado de la suma
+    logic [31:0] ALU_Result;
+    logic [31:0] Suma_Result; // Resultado de la suma
 
     assign ALU_Out = ALU_Result;
 
     // Definición de señales internas para la suma
     logic Suma_coutfin;
-    logic [63:0] Suma_s;
+    logic [31:0] Suma_s;
 
     // Instanciación del módulo SumaC2
     SumaC2 #(
-        .ANCHO(64) // Anchura de los operandos
+        .ANCHO(32) // Anchura de los operandos
     ) Suma_inst (
         .a(A),
         .b(B),
@@ -33,11 +33,11 @@ module Alu(
             4'b0000: ALU_Result = A & B;
             4'b0001: ALU_Result = A | B;
             4'b0010: ALU_Result = Suma_s; // Salida de la suma
-            default: ALU_Result = 64'b0;
+            default: ALU_Result = 32'b0;
         endcase
 
         // Comprobación de si ALU_Result es cero
-        if (ALU_Result == 64'b0)
+        if (ALU_Result == 32'b0)
             z = 1'b1;
         else
             z = 1'b0;
