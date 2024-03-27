@@ -104,7 +104,7 @@ module cpu;
         zero_alu, 
         newpc
         );
-    Datamemory data_memory(
+    DataMemory data_memory(
         output_alu, 
         reg_data_2, 
         mem_write, 
