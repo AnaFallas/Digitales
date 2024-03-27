@@ -30,7 +30,7 @@ assing Read_data2 = Registers[Rs2];
 ///OTRA OPCIÓN CON UN RESET DIFERENTE 
 always @(posedge clk or posedge reset) begin
         if (reset) begin
-            // Si la señal de reinicio está activa, inicializa todos los registros a cero
+            // Si la señal de reinicio está activa, inicializa los registros a cero
             for (integer i = 0; i < 32; i = i + 1) begin
                 Registers[i] <= 32'h0;
             end
