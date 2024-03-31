@@ -11,7 +11,7 @@ always @* begin
         12'b10_0000000_000 : AluControl_out = 4'b0010;
         12'b10_0000000_111 : AluControl_out = 4'b0000;
         12'b10_0000000_110 : AluControl_out = 4'b0001;
-        default: AluControl_out = 4'bzzzz; // Default value in case none of the above patterns match
+        default: AluControl_out = 4'bzzzz; 
     endcase
 end
 
