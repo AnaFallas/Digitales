@@ -22,7 +22,7 @@ module Control_Unit (
             7'b0000011: outcome = 8'b11110000;  // load
             7'b0100011: outcome = 8'b10001000;  //store
             7'b1100011: outcome = 8'b00000101;  //branch
-            7'b0000000: outcome = 8'b000000000;
+            7'b0000000: outcome = 8'b00000000;
             default: outcome = 8'b0; // Default 
         endcase
     end
