@@ -1,6 +1,6 @@
 `include "Clock.sv"
 `include "pc.sv"
-`include "adder.sv"
+`include "Adder.sv"
 `include "InstructionMemory.sv"
 `include "ControlUnit.sv"
 `include "RegisterBank.sv"
