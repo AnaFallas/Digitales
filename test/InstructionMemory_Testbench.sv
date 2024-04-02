@@ -1,3 +1,15 @@
+`include "Clock.sv"
+`include "pc.sv"
+`include "adder.sv"
+`include "InstructionMemory.sv"
+`include "ControlUnit.sv"
+`include "RegisterBank.sv"
+`include "Alu.sv"
+`include "ShiftUnit.sv"
+`include "Datamemory.sv"
+`include "Multiplexor.sv"
+`include "AluControl.sv"
+`include "SumaC2.sv"
 module InstructionMemory_Testbench;
 
     
