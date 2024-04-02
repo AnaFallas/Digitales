@@ -1,7 +1,7 @@
 module Alu_Testbench;
 
     // Parámetros de simulación
-    parameter CLOCK_PERIOD = 10; // Periodo de reloj en unidades de tiempo
+    parameter clk = 10; // Periodo de reloj en unidades de tiempo
 
     // Definición de señales
     logic [31:0] A, B;
@@ -28,39 +28,39 @@ module Alu_Testbench;
         ALU_Sel <= 4'b0000;
 
         // Espera un ciclo de reloj
-        #CLOCK_PERIOD;
+        #clk;
 
         // Realiza operación AND
         ALU_Sel <= 4'b0000;
-        #CLOCK_PERIOD;
+        #clk;
 
         // Realiza operación OR
         ALU_Sel <= 4'b0001;
-        #CLOCK_PERIOD;
+        #clk;
 
         // Realiza operación de suma
         ALU_Sel <= 4'b0010;
-        #CLOCK_PERIOD;
+        #clk;
 
         // Cambia A y B a valores diferentes para verificar el resultado de la suma
         A <= 32'h00000003;
         B <= 32'h00000004;
-        #CLOCK_PERIOD;
+        #clk;
 
         // Realiza operación de suma
         ALU_Sel <= 4'b0010;
-        #CLOCK_PERIOD;
+        #clk;
 
         // Realiza operación no definida (debería resultar en cero)
         ALU_Sel <= 4'b1111;
-        #CLOCK_PERIOD;
+        #clk;
 
         // Finaliza la simulación
         $finish;
     end
 
     // Simulación del reloj
-    always #((CLOCK_PERIOD/2)) begin
+    always #((clk/2)) begin
         // Alternar el reloj cada periodo
          clk = ~clk;
     end
