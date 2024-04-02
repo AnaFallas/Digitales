@@ -1,4 +1,4 @@
-
+`include "pc.sv"
 
 module PC_Testbench;
     parameter CLOCK_PERIOD = 10; 
@@ -7,7 +7,7 @@ module PC_Testbench;
     logic [31:0] oldpc;
     logic [31:0] newpc;
    
-    PC UUT (
+    pc UUT (
         .clk(clk),
         .rst(rst),
         .oldpc(oldpc),

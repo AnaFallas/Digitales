@@ -1,3 +1,5 @@
+`include "Alu.sv"
+`include "SumaC2.sv"
 module Alu_Testbench;
 
     // Parámetros de simulación

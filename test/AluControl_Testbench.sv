@@ -1,3 +1,5 @@
+`include "AluControl.sv"
+
 module AluControl_tb;
 
     // Parámetros

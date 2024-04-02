@@ -1,3 +1,5 @@
+
+`include "DataMemory.sv"
 module Datamemory_tb;
 
     // Parámetros
@@ -12,7 +14,7 @@ module Datamemory_tb;
     logic [63:0] dataout;
 
     // Instanciación del módulo bajo prueba
-    Datamemory dut (
+    DataMemory dut (
         .adr(adr),
         .datain(datain),
         .w(w),
