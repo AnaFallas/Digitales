@@ -1,20 +1,20 @@
 
 `include "DataMemory.sv"
-module Datamemory_tb;
+
+module Data_Memory_Testbench;
 
     // Parámetros
     parameter CLK_PERIOD = 10; // Periodo de reloj en unidades de tiempo
 
-    // Señales del testbench
+    // Definición de señales
+    logic [7:0] adr;
+    logic [7:0] datain;
+    logic w, r;
     logic clk = 0;
-    logic [63:0] adr;
-    logic [63:0] datain;
-    logic w;
-    logic r;
-    logic [63:0] dataout;
+    logic [7:0] dataout;
 
-    // Instanciación del módulo bajo prueba
-    DataMemory dut (
+    // Instancia del módulo DataMemory bajo prueba
+    DataMemory uut (
         .adr(adr),
         .datain(datain),
         .w(w),
@@ -25,38 +25,29 @@ module Datamemory_tb;
 
     // Generación de estímulos
     initial begin
-        // Inicialización de las entradas
-        adr = 0;
-        datain = 0;
-        w = 0;
-        r = 0;
+        // Inicialización de entradas
+        adr = 8'h00;
+        datain = 8'hFF;
+        w = 1'b1;
+        r = 1'b0;
 
         // Ciclo de reloj
-        forever #CLK_PERIOD clk = ~clk;
-
-        // Escritura de datos en la memoria
-        #20;
-        adr = 10;
-        datain = 64'hABCDEFFEDCBA;
-        w = 1;
-        #10;
-        w = 0;
-
-        // Lectura de datos desde la memoria
-        adr = 10;
-        r = 1;
-        #10;
-        r = 0;
-
-        // Terminar simulación
-        #10;
-        $finish;
+        forever #((CLK_PERIOD / 2)) clk = ~clk;
     end
 
-    // Monitor para visualizar las salidas
+    // Cambio de entradas
     always @(posedge clk) begin
-        $display("Time = %0t, dataout = %h", $time, dataout);
+        // Cambiar las entradas después de ciertos periodos de tiempo
+        #20 adr = 8'h0A;
+        #20 datain = 8'h55;
+        #20 w = 1'b1;
+        #20 r = 1'b1;
+    end
+
+    // Monitoreo de salidas
+    always @(posedge clk) begin
+        // Mostrar las salidas en cada ciclo de reloj
+        $display("adr = %h, datain = %h, w = %b, r = %b, dataout = %h", adr, datain, w, r, dataout);
     end
 
 endmodule
-
