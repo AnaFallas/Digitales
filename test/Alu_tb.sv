@@ -1,4 +1,5 @@
-`include "AluControl.sv"
+`include "Alu.sv"
+`include "SumaC2.sv"
 
 module Alu_tb;
 
