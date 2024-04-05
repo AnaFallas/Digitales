@@ -6,11 +6,11 @@ module DataMemory (
     output logic [63:0] dataout
 );
 
-    logic [7:0] MEMO[0:255];
+    logic [7:0] MEMO[0:256];
 
     integer i;
     initial begin
-        for (i = 0; i < 255; i = i + 1)
+        for (i = 0; i < 256; i = i + 1)
             MEMO[i] = i;
     end
 
