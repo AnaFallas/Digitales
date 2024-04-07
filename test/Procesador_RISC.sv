@@ -1,6 +1,17 @@
 `default_nettype none
 `timescale 1ns/10ps
-
+`include "Clock.sv"
+`include "pc.sv"
+`include "Adder.sv"
+`include "InstructionMemory.sv"
+`include "ControlUnit.sv"
+`include "RegisterBank.sv"
+`include "Alu.sv"
+`include "ShiftUnit.sv"
+`include "Datamemory.sv"
+`include "Multiplexor.sv"
+`include "AluControl.sv"
+`include "SumaC2.sv"
 module Procesador_RISC;
 
     wire clk;
@@ -59,7 +70,7 @@ module Procesador_RISC;
          alu_src,
          reg_write
          );
-    Multiplexor #(.size(5)) RB_multiplexer(
+    Multiplexor #(.size(5)) RB_multiplexor(
         instruction[20:16],
         instruction[4:0],
         reg_to_loc,
@@ -75,7 +86,7 @@ module Procesador_RISC;
         reg_data_1, 
         reg_data_2
         );
-    Multiplexor alu_multiplexer(
+    Multiplexor alu_multiplexor(
         reg_data_2, 
         output_sign_extend, 
         alu_src, 
@@ -97,7 +108,7 @@ module Procesador_RISC;
         output_shift_unit, 
         output_shift_unit_adder
         );
-    Multiplexor shift_unit_multiplexer(
+    Multiplexor shift_unit_multiplexor(
         output_pc_adder, 
         output_shift_unit_adder, 
         branch ,
@@ -112,13 +123,13 @@ module Procesador_RISC;
         clk, 
         output_data_memory
         );
-    Multiplexor data_memory_multiplexer(
+    Multiplexor data_memory_multiplexor(
         output_alu, 
         output_data_memory, 
         mem_to_reg, 
         input_data_register
         );
-    ALUControl alu_control_unit(
+    AluControl alu_control_unit(
         Alu_Op, 
         instruction[31:21], 
         alu_opcode
