@@ -1,17 +1,20 @@
+`include "SumaC2.sv"
+
 module SumaC2_Testbench;
 
-   
-    parameter ANCHO = 64;
-    parameter CLOCK_PERIOD = 10;
+    // Parámetros del testbench
+    parameter WIDTH = 8; // Ancho de los operandos
 
-
-    logic [ANCHO - 1 : 0] a;
-    logic [ANCHO - 1 : 0] b;
+    // Definición de señales
+    logic [WIDTH-1:0] a, b;
     logic ci;
-    logic [ANCHO - 1 : 0] s;
+    logic [WIDTH-1:0] s;
     logic coutfin;
 
-    SumaC2 #(ANCHO) UUT (
+    // Instancia del módulo SumaC2 bajo prueba
+    SumaC2 #(
+        .ANCHO(WIDTH)
+    ) uut (
         .a(a),
         .b(b),
         .ci(ci),
@@ -19,33 +22,30 @@ module SumaC2_Testbench;
         .coutfin(coutfin)
     );
 
+    // Generación de estímulos
     initial begin
-        a = 'hFFFFFFFFFFFFFFFF;
-        b = 'h0000000000000001;
-        ci = 0;
-        #CLOCK_PERIOD;
-        a = 'hFFFFFFFFFFFFFFFF;
-        b = 'h0000000000000001;
-        ci = 0;
-        #CLOCK_PERIOD;
+        // Cambio de entradas después de un cierto tiempo
+        #10;
+        a = 8'h0A; // Ejemplo de entrada a
+        b = 8'h05; // Ejemplo de entrada b
+        ci = 1'b0; // Ejemplo de acarreo de entrada
 
-        a = 'h0000000000000001;
-        b = 'hFFFFFFFFFFFFFFFF;
-        ci = 0;
-        #CLOCK_PERIOD;
+        // Cambios adicionales de entradas para probar diferentes casos
+        #10;
+        a = 8'hFF;
+        b = 8'h01;
+        ci = 1'b1;
 
-        a = 'h8000000000000000;
-        b = 'h8000000000000000;
-        ci = 0;
-        #CLOCK_PERIOD;
+        // Otros cambios de entradas pueden ser añadidos aquí
 
+        // Terminar la simulación después de un cierto tiempo
+        #100;
         $finish;
     end
 
-   
-    always #((CLOCK_PERIOD/2)) begin
-         clk = ~clk;
-
+    // Monitoreo de salidas
+    always @(posedge $time) begin
+        $display("Time = %0t: a = %h, b = %h, ci = %b, s = %h, coutfin = %b", $time, a, b, ci, s, coutfin);
     end
 
 endmodule
