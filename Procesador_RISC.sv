@@ -1,7 +1,7 @@
 `default_nettype none
 `timescale 1ns/10ps
 
-module cpu;
+module Procesador_RISC;
 
     wire clk;
     reg pc_reset;
