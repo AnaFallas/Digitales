@@ -27,6 +27,9 @@ module RegisterBank_tb;
     // Generación de estímulos
     initial begin
         // Inicialización de señales
+
+        $dumpfile("RegisterBank.vcd");
+        $dumpvars(0, uut);
         register1 = 5'b00000;
         register2 = 5'b00001;
         register3 = 5'b00010;
