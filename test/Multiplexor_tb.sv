@@ -22,6 +22,8 @@ module Multiplexor_tb;
 
     // Generación de estímulos
     initial begin
+         $dumpfile("Multiplexor_tb.vcd");
+        $dumpvars(5, uut);
         // Inicialización de señales
         a = 64'h123456789ABCDEF0;
         b = 64'hFFFFFFFFFFFFFFFF;

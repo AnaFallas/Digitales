@@ -25,6 +25,9 @@ module Data_Memory_Testbench;
 
     // Generación de estímulos
     initial begin
+
+        $dumpfile("Data_Memory_Testbench.vcd");
+        $dumpvars(5, utt);
         // Inicialización de entradas
         adr = 8'h00;
         datain = 8'hFF;

@@ -24,6 +24,9 @@ module SumaC2_Testbench;
 
     // Generación de estímulos
     initial begin
+
+        $dumpfile("SumaC2_Testbench.vcd");
+        $dumpvars(5, uut);
         // Cambio de entradas después de un cierto tiempo
         #10;
         a = 8'h0A; // Ejemplo de entrada a

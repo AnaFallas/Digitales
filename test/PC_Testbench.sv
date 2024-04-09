@@ -15,6 +15,8 @@ module PC_Testbench;
     );
 
     initial begin
+         $dumpfile("PC_Testbench.vcd");
+        $dumpvars(5, UUT);
   
         clk = 0;
         rst = 1;

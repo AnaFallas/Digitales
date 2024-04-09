@@ -19,6 +19,9 @@ module InstructionMemory_Testbench;
 
     // Generación de estímulos
     initial begin
+        $dumpfile("InstructionMemory_Testbench.vcd");
+        $dumpvars(5, UTT);
+        
         // Realiza lecturas de instrucciones aleatorias
         repeat (50) begin
             adr = $random % MEM_SIZE; // Genera una dirección de memoria aleatoria
