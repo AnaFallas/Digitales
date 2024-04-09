@@ -137,7 +137,7 @@ module Procesador_RISC;
 
     initial begin
         $dumpfile("Procesador_RISC.vcd");
-        $dumpvars(0, Procesador_RISC);
+        $dumpvars(5, Procesador_RISC);
         #200;
         $finish;
     end 

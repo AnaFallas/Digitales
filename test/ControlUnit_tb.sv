@@ -31,6 +31,9 @@ module Control_Unit_tb;
 
     // Generación de estímulos
     initial begin
+
+        $dumpfile("ControlUnitTb.vcd");
+        $dumpvars(5, utt);
         // Cambio de OpCode para probar diferentes combinaciones
         OpCode = R_TYPE_OP;
         #10;

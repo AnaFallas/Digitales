@@ -25,6 +25,9 @@ module Alu_tb;
 
     // Generación de estímulos
     initial begin
+
+        $dumpfile("AluTb.vcd");
+        $dumpvars(5, utt);
         // Inicialización de entradas
         A = 32'h0000_0000;
         B = 32'h0000_0000;

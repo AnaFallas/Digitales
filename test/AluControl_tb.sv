@@ -22,6 +22,9 @@ module AluControl_tb;
 
     // Generación de estímulos
     initial begin
+
+        $dumpfile("AluControlTb.vcd");
+        $dumpvars(5, utt);
         // Inicialización de entradas
         ALUOp_in = 2'b00;
         func7 = 7'bxxxxxxx;

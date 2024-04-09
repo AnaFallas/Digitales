@@ -15,6 +15,9 @@ module ShiftUnit_TB;
 
     // Inicialización de la simulación
     initial begin
+
+        $dumpfile("ShiftUnitTb.vcd");
+        $dumpvars(5, dut);
         // Asignar valores de entrada
         input_data = 64'hABCDEFFF;  // Por ejemplo, un valor hexadecimal
 
