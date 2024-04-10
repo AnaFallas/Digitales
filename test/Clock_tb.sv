@@ -11,7 +11,7 @@ module Clock_tb;
 
     initial begin
         $dumpfile("clock_tb.vcd"); 
-        $dumpvars(0, utt); 
+        $dumpvars(0, uut); 
         CLK = 0; // Inicializamos el reloj en bajo
         #10; // Esperamos 10 unidades de tiempo
         repeat(20) begin // Repetimos 20 veces
