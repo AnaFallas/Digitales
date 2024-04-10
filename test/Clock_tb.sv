@@ -1,5 +1,5 @@
 `timescale 1ns/1ns 
-
+`include "Clock.sv"
 module Clock_tb;
 
     logic CLK;
