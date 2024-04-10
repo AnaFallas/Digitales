@@ -27,7 +27,7 @@ module Alu_tb;
     initial begin
 
         $dumpfile("AluTb.vcd");
-        $dumpvars(5, utt);
+        $dumpvars(5, uut);
         // Inicialización de entradas
         A = 32'h0000_0000;
         B = 32'h0000_0000;
