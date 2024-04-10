@@ -20,7 +20,7 @@ module InstructionMemory_Testbench;
     // Generación de estímulos
     initial begin
         $dumpfile("InstructionMemory_Testbench.vcd");
-        $dumpvars(5, UTT);
+        $dumpvars(5, UUT);
         
         // Realiza lecturas de instrucciones aleatorias
         repeat (50) begin

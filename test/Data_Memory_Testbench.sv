@@ -27,7 +27,7 @@ module Data_Memory_Testbench;
     initial begin
 
         $dumpfile("Data_Memory_Testbench.vcd");
-        $dumpvars(5, utt);
+        $dumpvars(5,  uut);
         // Inicialización de entradas
         adr = 8'h00;
         datain = 8'hFF;

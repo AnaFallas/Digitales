@@ -33,7 +33,7 @@ module Control_Unit_tb;
     initial begin
 
         $dumpfile("ControlUnitTb.vcd");
-        $dumpvars(5, utt);
+        $dumpvars(5, uut);
         // Cambio de OpCode para probar diferentes combinaciones
         OpCode = R_TYPE_OP;
         #10;
