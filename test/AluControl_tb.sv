@@ -24,7 +24,7 @@ module AluControl_tb;
     initial begin
 
         $dumpfile("AluControlTb.vcd");
-        $dumpvars(5, utt);
+        $dumpvars(5, uut);
         // Inicialización de entradas
         ALUOp_in = 2'b00;
         func7 = 7'bxxxxxxx;
