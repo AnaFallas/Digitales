@@ -1,6 +1,3 @@
-`include "Alu.sv"
-`include "SumaC2.sv"
-
 module Alu_tb;
 
     // Parámetros
@@ -25,16 +22,16 @@ module Alu_tb;
 
     // Generación de estímulos
     initial begin
-
-        $dumpfile("AluTb.vcd");
-        $dumpvars(5, uut);
         // Inicialización de entradas
         A = 32'h0000_0000;
         B = 32'h0000_0000;
         ALU_Sel = 4'b0000;
 
-        // Ciclo de reloj
-        forever #((CLK_PERIOD / 2)) clk = ~clk;
+        // Generación del reloj
+        forever begin
+            #((CLK_PERIOD / 2)) clk = ~clk;
+            #1; // Espera mínima para evitar el bloqueo del simulador
+        end
     end
 
     // Cambio de entradas
