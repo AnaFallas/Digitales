@@ -1,24 +1,34 @@
 `timescale 1ns/1ns 
 `include "Clock.sv"
+`default_nettype none
+
+
 module Clock_tb;
 
-    logic CLK;
+    // Definición de señal de reloj
+    reg CLK;
 
-    // Instancia del módulo Clock
+    // Instancia del módulo Clock bajo prueba
     Clock uut (
-        .CLK(CLK) 
+        .CLK(CLK)
     );
 
+    // Generación de estímulos
     initial begin
-        $dumpfile("clock_tb.vcd"); 
-        $dumpvars(5, uut); 
-        CLK = 0; // Inicializamos el reloj en bajo
-        #10; // Esperamos 10 unidades de tiempo
-        repeat(20) begin // Repetimos 20 veces
-            #100; // Esperamos 100 unidades de tiempo
-            CLK = ~CLK; 
+        // Inicializa la simulación
+        $dumpfile("Clock.vcd");
+        $dumpvars(0, uut);
+        #10; // Espera un pequeño tiempo para estabilizar la simulación
+
+        // Realiza 10 ciclos de reloj
+        repeat (10) begin
+            #5; // Avanza 5 unidades de tiempo (medio período)
+            CLK = ~CLK; // Invierte la señal de reloj
         end
-        $finish; 
+
+        // Termina la simulación
+        #10; // Espera un pequeño tiempo antes de finalizar
+        $finish;
     end
 
 endmodule
