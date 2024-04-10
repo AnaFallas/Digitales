@@ -1,6 +1,6 @@
 `include "Alu.sv"
 `include "SumaC2.sv"
-`timescale 1ns/1ns 
+
 module Alu_tb;
 
     // Parámetros
@@ -40,9 +40,9 @@ module Alu_tb;
     // Cambio de entradas
     always @(posedge clk) begin
         // Cambiar las entradas después de ciertos periodos de tiempo
-        #20 A = 32'hABCDEFFF;
-        #20 B = 32'h12345678;
-        #20 ALU_Sel = 4'b0010;
+        #10 A = 32'hABCDEFFF;
+        #10 B = 32'h12345678;
+        #10 ALU_Sel = 4'b0010;
     end
 
     // Monitoreo de salidas
