@@ -1,4 +1,4 @@
-
+`timescale 1ns/1ns 
 `include "RegisterBank.sv"
 module RegisterBank_tb;
 

@@ -1,6 +1,6 @@
 `include "Clock.sv"
 `include "InstructionMemory.sv"
-
+`timescale 1ns/1ns 
 module InstructionMemory_Testbench;
 
     

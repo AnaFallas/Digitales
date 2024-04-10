@@ -1,4 +1,4 @@
-
+`timescale 1ns/1ns 
 `include "DataMemory.sv"
 
 module Data_Memory_Testbench;

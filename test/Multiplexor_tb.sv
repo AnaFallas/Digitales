@@ -1,5 +1,5 @@
 `include "Multiplexor.sv"
-
+`timescale 1ns/1ns 
 
 module Multiplexor_tb;
 

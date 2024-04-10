@@ -1,5 +1,5 @@
 `include "AluControl.sv"
-
+`timescale 1ns/1ns 
 module AluControl_tb;
 
     // Parámetros

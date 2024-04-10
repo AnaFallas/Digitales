@@ -1,4 +1,6 @@
-module ShiftUnit_TB;
+`timescale 1ns/1ns 
+`include "ShiftUnit.sv"
+module ShiftUnit_Tb;
 
     // Parámetros
     parameter n = 64;  // Tamaño predeterminado

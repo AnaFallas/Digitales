@@ -1,5 +1,5 @@
 `include "pc.sv"
-
+`timescale 1ns/1ns 
 module PC_Testbench;
     parameter CLOCK_PERIOD = 10; 
     logic clk;

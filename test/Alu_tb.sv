@@ -1,6 +1,6 @@
 `include "Alu.sv"
 `include "SumaC2.sv"
-
+`timescale 1ns/1ns 
 module Alu_tb;
 
     // Parámetros

@@ -1,4 +1,4 @@
-
+`timescale 1ns/1ns 
 `include "ControlUnit.sv"
 module Control_Unit_tb;
 
