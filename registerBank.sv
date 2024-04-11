@@ -7,7 +7,7 @@ input clk;
 input regwrite;
 
 output[63:0] dataout1;
-output[63:0] dataout2;
+output[63:0] dataout2;//extención
 
 reg [63:0] Bank [0:31];
 
