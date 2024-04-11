@@ -1,28 +1,28 @@
-module RegisterBank(register1 ,register2 ,register3 ,datain ,clk ,regwrite ,dataout1 ,dataout2);
-input[4:0] register1;
-input[4:0] register2;
-input[4:0] register3;
-input[63:0] datain;
-input clk;
-input regwrite;
+module RegisterBank (
+    input logic [4:0] register1,
+    input logic [4:0] register2,
+    input logic [4:0] register3,
+    input logic [63:0] datain,
+    input logic clk,
+    input logic regwrite,
+    output logic [63:0] dataout1,
+    output logic [63:0] dataout2
+);
 
-output[63:0] dataout1;
-output[63:0] dataout2;
+    logic [63:0] Bank [0:31];
+    initial begin
+        for (int i = 0; i < 32; i = i + 1) begin
+            Bank[i] = i;
+        end
+    end
 
-reg [63:0] Bank [0:31];
+    always_ff @(posedge clk) begin
+        if (regwrite) begin
+            Bank[register3] <= datain;
+        end
+    end
 
-integer  i;
-initial 
-begin
-	for( i = 0; i < 32; i = i + 1) 
-		Bank[i] = i;
-end
-always @ (posedge clk ) 
-begin
-	Bank[register3] = (regwrite == 1'b1)? datain : Bank[register3];
-end
+    assign dataout1 = Bank[register1];
+    assign dataout2 = Bank[register2];
 
-assign dataout1 = Bank[register1];
-assign dataout2 = Bank[register2];
-
-endmodule 
+endmodule
