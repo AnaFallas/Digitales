@@ -7,7 +7,7 @@ module Alu(
 );
 
     logic [31:0] ALU_Result;
-    logic [31:0] Suma_Result; 
+    //logic [31:0] Suma_Result; 
     assign ALU_Out = ALU_Result;
 
     logic Suma_coutfin;

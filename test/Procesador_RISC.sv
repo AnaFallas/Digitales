@@ -57,7 +57,7 @@ module Procesador_RISC;
         );
 
     InstructionMemory InstructionMemory1(
-        oldpc, 
+        oldpc[63:2], 
         instruction
         );
     ControlUnit ControlUnit1(
