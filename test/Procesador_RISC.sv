@@ -37,7 +37,8 @@ module Procesador_RISC;
 
     initial begin
         pc_reset = 1;
-        #100 pc_reset = 0;
+        @(posedge clk);
+        @(posedge clk); pc_reset <= 0;
     end
 
     Clock clock1(
@@ -139,7 +140,7 @@ module Procesador_RISC;
     initial begin
         $dumpfile("Procesador_RISC.vcd");
         $dumpvars(5, Procesador_RISC);
-        #200;
+        repeat(20) @(posedge clk);
         $finish;
     end 
 
