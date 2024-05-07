@@ -27,7 +27,7 @@ module Procesador_RISC;
     wire mem_write;
     wire alu_src;
     wire reg_write;
-
+    wire muxShift;
     wire [4:0] output_register_bank_multiplexor;
 
     wire zero_alu;
@@ -108,11 +108,12 @@ module Procesador_RISC;
         output_shift_unit, 
         output_shift_unit_adder
         );
+
+    assign muxShift =   zero_alu & branch;
     Multiplexor shift_unit_multiplexor(
         output_pc_adder, 
         output_shift_unit_adder, 
-        branch ,
-        zero_alu, 
+        muxShift, 
         newpc
         );
     DataMemory data_memory(
