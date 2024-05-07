@@ -1,4 +1,4 @@
-module Control_Unit (
+module ControlUnit (
     input [6:0] OpCode,
     output reg Branch,
     output reg MemRead,
