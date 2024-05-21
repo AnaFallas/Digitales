@@ -10,7 +10,7 @@ module RegisterBank (
 );
 
    // logic [63:0] Bank [0:31];
-    logic [31:0][63:0] Bank;
+    logic [63:0] Bank [31:0];
     /*initial begin
         for (int i = 0; i < 32; i = i + 1) begin
             Bank[i] = i;
