@@ -71,12 +71,7 @@ module Procesador_RISC;
          alu_src,
          reg_write
          );
-    Multiplexor RB_multiplexor(
-        instruction[24:20],
-        instruction[4:0],
-        reg_to_loc,
-        output_register_bank_multiplexor
-           );
+
     RegisterBank register_bank(
         instruction[19:15], 
         instruction[24:20], 
@@ -91,7 +86,7 @@ module Procesador_RISC;
         reg_data_2, 
         output_sign_extend, 
         alu_src, 
-       output_alu_multiplexor
+        output_alu_multiplexor
         );
     Alu alu1(
         reg_data_1, 
