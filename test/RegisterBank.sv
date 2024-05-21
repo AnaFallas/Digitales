@@ -19,7 +19,7 @@ module RegisterBank (
         end
     end
 
-    assign dataout1 = (register1==5'b0)?64'b0:Bank[register1];
-    assign dataout2 = (register2==5'b0)?64'b0:Bank[register2];
+    assign dataout1 = (register1!=64'b0)?64'b0:Bank[register1];
+    assign dataout2 = (register2!=64'b0)?64'b0:Bank[register2];
 
 endmodule
