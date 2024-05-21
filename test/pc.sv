@@ -1,8 +1,8 @@
 module pc (
     input logic clk,
     input logic rst,
-    input logic [31:0] oldpc,
-    output logic [31:0] newpc
+    input logic [63:0] oldpc,
+    output logic [63:0] newpc
 );
     always_ff @(posedge clk) begin
         if (rst)

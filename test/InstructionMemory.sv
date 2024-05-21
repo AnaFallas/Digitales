@@ -1,4 +1,4 @@
-module InstructionMemory #(parameter size = 256) (
+module InstructionMemory #(parameter size = 64) (
     input logic [63:0] adr,
     output logic [31:0] Instruction
 );

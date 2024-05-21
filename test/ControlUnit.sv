@@ -1,5 +1,6 @@
 module ControlUnit (
     input [6:0] OpCode,
+    
     output reg Branch,
     output reg MemRead,
     output reg MemtoReg,

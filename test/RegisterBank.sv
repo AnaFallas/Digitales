@@ -9,13 +9,9 @@ module RegisterBank (
     output logic [63:0] dataout2
 );
 
-   // logic [63:0] Bank [0:31];
+
     logic [63:0] Bank [31:0];
-    /*initial begin
-        for (int i = 0; i < 32; i = i + 1) begin
-            Bank[i] = i;
-        end
-    end*/
+
 
     always_ff @(posedge clk) begin
         if (regwrite) begin
@@ -23,7 +19,7 @@ module RegisterBank (
         end
     end
 
-    assign dataout1 = (register1==5'd0)?64'd0:Bank[register1];
-    assign dataout2 = (register2==5'd0)?64'd0:Bank[register2];
+    assign dataout1 = (register1==5'b0)?64'b0:Bank[register1];
+    assign dataout2 = (register2==5'b0)?64'b0:Bank[register2];
 
 endmodule
