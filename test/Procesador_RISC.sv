@@ -79,8 +79,8 @@ module Procesador_RISC;
            );
     RegisterBank register_bank(
         instruction[19:15], 
-        output_register_bank_multiplexor, 
         instruction[24:20], 
+        instruction[11:7], 
         input_data_register, 
         clk, 
         reg_write, 
