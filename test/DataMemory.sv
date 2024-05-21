@@ -7,13 +7,31 @@ module DataMemory (
 );
 
     logic [7:0] MEMO [31:0]; // Tamaño de la memoria ajustado
-
+    assign dataout = (r) ? {
+        MEMO[adr + 7],
+        MEMO[adr + 6],
+        MEMO[adr + 5],
+        MEMO[adr + 4],
+        MEMO[adr + 3],
+        MEMO[adr + 2],
+        MEMO[adr + 1],
+        MEMO[adr] } ;
+    
     always_ff @(posedge clk) begin
-        if (w) begin
-            MEMO[adr] <= datain;
+        if (w == 1'b1) begin
+            { 
+            MEMO[adr + 7] ,
+            MEMO[adr + 6] ,
+            MEMO[adr + 5] ,
+            MEMO[adr + 4] ,
+            MEMO[adr + 3] ,
+            MEMO[adr + 2] ,
+            MEMO[adr + 1] ,
+            MEMO[adr]     
+            } <= datain;
+
+
         end
     end
-
-    assign dataout = (r) ? MEMO[adr] : 8'bz;
 
 endmodule
