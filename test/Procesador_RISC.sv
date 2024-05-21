@@ -62,7 +62,7 @@ module Procesador_RISC;
         instruction
         );
     ControlUnit ControlUnit1(
-        instruction[31:21],
+        instruction[6:0],
         branch,
         mem_read,
          mem_to_reg, 
@@ -71,8 +71,8 @@ module Procesador_RISC;
          alu_src,
          reg_write
          );
-    Multiplexor #(.size(5)) RB_multiplexor(
-        instruction[20:16],
+    Multiplexor RB_multiplexor(
+        instruction[24:20],
         instruction[4:0],
         reg_to_loc,
         output_register_bank_multiplexor
